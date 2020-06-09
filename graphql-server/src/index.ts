@@ -24,21 +24,21 @@ type DataSources = ReturnType<typeof dataSources>;
  * _A resolver is a function that's responsible for populating the data for a single field in your schema._
  * https://www.apollographql.com/docs/apollo-server/data/resolvers/
  */
-export const resolvers: IResolvers<any, { dataSources: DataSources }> = {
+export const resolvers: IResolvers<undefined, { dataSources: DataSources }> = {
   Query: {
-    book: async (_source, { id }: { id: number }, { dataSources }) => {
+    book: async (parent, { id }: { id: number }, { dataSources }) => {
       return dataSources.booksAPI.getBook(id);
     },
-    books: async (_source, _params, { dataSources }) => {
+    books: async (parent, args, { dataSources }) => {
       return dataSources.booksAPI.getBooks();
     },
   },
   Mutation: {
-    addBook: async (_source, { input }: { input: Book }, { dataSources }) => {
+    addBook: async (parent, { input }: { input: Book }, { dataSources }) => {
       return dataSources.booksAPI.postBook({ ...input });
     },
     updateBook: async (
-      _source,
+      parent,
       { id, input }: { id: number; input: Book },
       { dataSources }
     ) => {
