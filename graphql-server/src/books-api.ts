@@ -1,6 +1,6 @@
 import { RESTDataSource } from "apollo-datasource-rest";
 
-type Book = {
+export type Book = {
   title: string;
   author: string;
 };

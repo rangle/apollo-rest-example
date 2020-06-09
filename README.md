@@ -49,7 +49,7 @@ Get the title of the book at index 2
 
 ## Post data
 
-Adds a new entry
+Adds a new book
 
 ```GraphQL
 mutation {
@@ -61,6 +61,8 @@ mutation {
 ```
 
 ## Put data
+
+Updates an existing book (by index)
 
 ```GraphQL
 mutation {
