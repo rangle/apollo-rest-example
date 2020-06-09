@@ -1,17 +1,17 @@
 # apollo-rest-example
 
-Demo of using REST calls via Apollo Server
+Demo of wrapping a REST API Server via Apollo Server.
 
-## Start API Server
+## Start REST API Server
 
 ```bash
 cd graphql-server
 yarn start # or `yarn watch` for dev
 ```
 
-Changes are only stored in memory, so all data is reset when restarting the server.
+_Changes are only stored in memory, so all data is reset when restarting the server._
 
-You can see all data via `http://localhost:8080/books`.
+You can see all currently stored data via [`http://localhost:8080/books`](http://localhost:8080/books).
 
 ## Start Apollo Server
 
