@@ -17,6 +17,6 @@
   },
   "scripts": {
     "start": "ts-node src/index.ts",
-    "watch": "nodemon --exec 'yarn start'"
+    "watch": "nodemon --exec 'yarn start' -e ts,json"
   }
 }

@@ -1,22 +1,33 @@
 import { RESTDataSource } from "apollo-datasource-rest";
 
+type Book = {
+  title: string;
+  author: string;
+};
+/** Data shape returned by the API for `PUT` and `POST` */
+type MutationResponse = { status: string; data: Book };
+
 export default class BooksAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = "http://localhost:8080/";
+    this.baseURL = "http://localhost:8080/"; // this sets the base-url for the API
   }
 
-  async getBook(id: number) {
-    return this.get(`books/${id}`);
+  async getBook(bookId: number) {
+    return this.get<Book>(`books/${bookId}`);
   }
 
-  async getBooks(id: number) {
-    return this.get(`books`);
+  async getBooks() {
+    return this.get<Book[]>(`books`);
   }
 
-  async getMostViewedMovies(limit = 10) {
-    const data = await this.get("books");
-    console.log(data);
-    return data.results;
+  async postBook(book: Book) {
+    return this.post<MutationResponse>(`books`, book).then((resp) => resp.data);
+  }
+
+  async putBook(bookId: number, book: Book) {
+    return this.put<MutationResponse>(`books/${bookId}`, book).then(
+      (resp) => resp.data
+    );
   }
 }

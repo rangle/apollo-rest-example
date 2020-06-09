@@ -1,22 +1,43 @@
 import { gql } from "apollo-server";
 
 // A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
+// that together define the "shape" of queries/mutations that are executed against
 // your data.
 export const typeDefs = gql`
   # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
 
   # This "Book" type defines the queryable fields for every book in our data source.
+  "Type matching what is returned from the API Server"
   type Book {
+    "Title of the book"
     title: String
+    "Author of the book"
     author: String
   }
 
-  # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
+  "Type to POST/PUT books"
+  input BookInput {
+    "Title of the book"
+    title: String!
+    "Author of the book"
+    author: String!
+  }
+
+  # The "Query" type is special: it lists all of the available
+  # read operations and their return types
   type Query {
+    "GETs all books from the API Server"
     books: [Book]
+    "GETs a book by its index from the API Server"
     book(id: ID!): Book
+  }
+
+  # The "Mutation" type is special: it lists all of the available
+  # write operations and their return types
+  type Mutation {
+    "POSTs a new book to the API Server"
+    addBook(input: BookInput): Book
+    "PUTs an existing book to the API Server"
+    updateBook(id: ID!, input: BookInput): Book
   }
 `;
