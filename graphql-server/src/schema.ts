@@ -4,8 +4,6 @@ import { gql } from "apollo-server";
 // that together define the "shape" of queries/mutations that are executed against
 // your data.
 export const typeDefs = gql`
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
-
   # This "Book" type defines the queryable fields for every book in our data source.
   "Type matching what is returned from the API Server"
   type Book {

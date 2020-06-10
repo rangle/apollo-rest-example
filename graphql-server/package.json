@@ -17,6 +17,7 @@
   },
   "scripts": {
     "start": "ts-node src/index.ts",
-    "watch": "nodemon --exec 'yarn start' -e ts,json"
+    "watch": "nodemon --exec 'yarn start' -e ts,json",
+    "save-schema": "npx apollo service:download generated/schema.json"
   }
 }
