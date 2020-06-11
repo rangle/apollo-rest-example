@@ -1,3 +1,4 @@
+# Docs: https://graphql-code-generator.com/docs/plugins/typescript-resolvers
 overwrite: true
 schema: "http://localhost:4000"
 documents: null
