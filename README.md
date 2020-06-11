@@ -2,6 +2,10 @@
 
 Demo of wrapping a REST API Server via Apollo Server.
 
+- Fully type safe
+- Uses [`@graphql-codegen/typescript-resolvers`](https://graphql-code-generator.com/docs/plugins/typescript-resolvers) to auto-generate the resolver types based on the Schema
+  See `graphql-server/codegen.yml` for configuration
+
 ## Start REST API Server
 
 ```bash
@@ -18,6 +22,7 @@ You can see all currently stored data via [`http://localhost:8080/books`](http:/
 ```bash
 cd graphql-server
 yarn start # or `yarn watch` for dev
+yarn graphql-generate # generate typings for resolvers based on schema
 ```
 
 open [`http://localhost:4000/`](http://localhost:4000/) to see the [GraphQL Playground](https://www.apollographql.com/docs/apollo-server/testing/graphql-playground/)

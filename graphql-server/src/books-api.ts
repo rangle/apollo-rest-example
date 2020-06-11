@@ -4,9 +4,11 @@ export type Book = {
   title: string;
   author: string;
 };
+
 /** Data shape returned by the API for `PUT` and `POST` */
 type MutationResponse = { status: string; data: Book };
 
+/** Wraps the rest-api-server's API as data source to be used in resolvers */
 export default class BooksAPI extends RESTDataSource {
   constructor() {
     super();

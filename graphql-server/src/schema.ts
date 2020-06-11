@@ -10,9 +10,9 @@ export const typeDefs = gql`
   "Type matching what is returned from the API Server"
   type Book {
     "Title of the book"
-    title: String
+    title: String!
     "Author of the book"
-    author: String
+    author: String!
   }
 
   "Type to POST/PUT books"
@@ -27,7 +27,7 @@ export const typeDefs = gql`
   # read operations and their return types
   type Query {
     "GETs all books from the API Server"
-    books: [Book]
+    books: [Book!]
     "GETs a book by its index from the API Server"
     book(id: ID!): Book
   }
@@ -36,8 +36,8 @@ export const typeDefs = gql`
   # write operations and their return types
   type Mutation {
     "POSTs a new book to the API Server"
-    addBook(input: BookInput): Book
+    addBook(input: BookInput!): Book!
     "PUTs an existing book to the API Server"
-    updateBook(id: ID!, input: BookInput): Book
+    updateBook(id: ID!, input: BookInput!): Book!
   }
 `;
